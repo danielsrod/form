@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./canvas.js"></script>
+    <script src="./html2canvas.js"></script>
+    <script>
+        function doCapture() {
+          html2canvas(document.getElementById('div2download')).then(function (canvas) {
+            const canvas2download = canvas.toDataURL("image/jpg", 0.9);
+            const image = document.createElement('a');
+            image.id = 'image2download'
+            image.href = canvas2download;
+            image.download = 'smt';
+            image.click();
+          });  
+        }
+    </script>
+    <title>FORM</title>
+</head>
+
+<body>
+    <div class="left-block">
+        <div class="colors">
+            <button type="button" value="#000000"></button>
+
+            <button type="button" value="#ffffff"></button>
+        </div>
+        <div class="brushes">
+            <button type="button" value="1"></button>
+            <button type="button" value="2"></button>
+            <button type="button" value="3"></button>
+            <button type="button" value="4"></button>
+            <button type="button" value="5"></button>
+        </div>
+        <div class="buttons">
+            <button id="clear" type="button">Clear</button>
+            <button id="save" type="button" onclick="doCapture();">Save</button>
+        </div>
+    </div>
+
+    <div id="div2download">
+
+
+        <div class="right-block">
+            <canvas id="paint-canvas" width="383" height="445"></canvas>
+        </div>
+
+        <div>
+            <img src="./form.jpg" alt="" id="form_image">
+        </div>
+
+    </div>
+</body>
+
+</html>
